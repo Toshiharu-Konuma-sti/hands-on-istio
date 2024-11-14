@@ -24,11 +24,12 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "\n### START: Install Istio ##########"
+ISTIO_DIR=$SET_DIR/istio
 which istioctl
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] || [ ! -d $ISTIO_DIR/ ]; then
 	curl -L "https://istio.io/downloadIstio" | sh 
-	mv ./istio-1.*.*/ $SET_DIR/istio/
-	sudo install -o root -g root -m 0755 $SET_DIR/istio/bin/istioctl /usr/local/bin/
+	mv ./istio-1.*.*/ $ISTIO_DIR/
+	sudo install -o root -g root -m 0755 $ISTIO_DIR/bin/istioctl /usr/local/bin/
 fi
 
 call_show_finish_banner
