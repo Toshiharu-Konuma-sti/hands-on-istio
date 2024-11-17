@@ -1,11 +1,12 @@
 #!/bin/sh
 
-SET_DIR=$(cd $(dirname $0); pwd)
-. $SET_DIR/functions.sh
+CUR_DIR=$(cd $(dirname $0); pwd)
+. $CUR_DIR/functions.sh
 
 call_show_start_banner
 
-echo "### the dir for setting up  = [$SET_DIR] ##########"
+SET_DIR=$(call_path_of_setup $CUR_DIR)
+echo "\n### the dir for setting up  = [$SET_DIR] ##########"
 
 echo "\n### START: Apply resources of kubernetes for WordPress Application ###"
 kubectl apply -f $SET_DIR/wordpress/

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SET_DIR=$(cd $(dirname $0); pwd)
-. $SET_DIR/functions.sh
+CUR_DIR=$(cd $(dirname $0); pwd)
+. $CUR_DIR/functions.sh
 
 call_show_start_banner
 

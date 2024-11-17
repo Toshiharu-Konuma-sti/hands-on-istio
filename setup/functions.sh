@@ -1,16 +1,29 @@
 
+# {{{ call_own_fname()
 call_own_fname()
 {
 	OFNM=$(basename $0)
 	echo "$OFNM"
 }
+# }}}
 
-# $1: Current directory (setup)
+# {{{ call_path_of_setup()
+# $1: the current directory
+call_path_of_setup()
+{
+	TARGET=$(realpath $1/../setup)
+	echo "$TARGET"
+}
+# }}}
+
+# {{{ call_path_of_experience()
+# $1: the current directory
 call_path_of_experience()
 {
 	TARGET=$(realpath $1/../try-my-hand)
 	echo "$TARGET"
 }
+# }}}
 
 # {{{ call_show_start_banner()
 # $0: the name of the script being executed 
