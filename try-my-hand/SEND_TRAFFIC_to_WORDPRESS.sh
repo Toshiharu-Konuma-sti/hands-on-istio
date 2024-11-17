@@ -7,7 +7,7 @@ UNIT=10
 for i in $(seq 1 $MAX)
 do
 	RET=$(curl -L -I "$URL" | grep HTTP/)
-	echo "$i/$MAX: $RET"
+	echo "$RET" | sed "s/^/$(echo "$i\/$MAX: ")/g"
 	if [ $(expr $i % $UNIT) -eq 0 ]; then
 		sleep 1
 	fi
