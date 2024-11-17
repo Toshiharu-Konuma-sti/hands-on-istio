@@ -1,14 +1,9 @@
 #!/bin/sh
 
-URL="http://try-istio.example/"
-MAX=10000
-UNIT=10
+CUR_DIR=$(cd $(dirname $0); pwd)
+. $CUR_DIR/functions.sh
 
-for i in $(seq 1 $MAX)
-do
-	RET=$(curl -L -I "$URL" | grep HTTP/)
-	echo "$RET" | sed "s/^/$(echo "$i\/$MAX: ")/g"
-	if [ $(expr $i % $UNIT) -eq 0 ]; then
-		sleep 1
-	fi
-done
+URL="http://try-istio.example/"
+
+call_send_http_request $URL
+
