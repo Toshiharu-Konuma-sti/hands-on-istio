@@ -1,13 +1,14 @@
 #!/bin/sh
 
-SET_DIR=$(cd $(dirname $0); pwd)
-. $SET_DIR/functions.sh
+CUR_DIR=$(cd $(dirname $0); pwd)
+. $CUR_DIR/functions.sh
 
 call_show_start_banner
 
-#	EXP_DIR=$(call_path_of_experience $SET_DIR)
+SET_DIR=$(call_path_of_setup $CUR_DIR)
 echo "\n### the dir for setting up  = [$SET_DIR] ##########"
-#	echo "### the dir for experiences = [$EXP_DIR] ##########"
+
+ISTIO_DIR=$SET_DIR/istio
 
 echo "\n### START: Install Minikube ##########"
 minikube version
@@ -24,7 +25,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "\n### START: Install Istio ##########"
-ISTIO_DIR=$SET_DIR/istio
 which istioctl
 if [ $? -ne 0 ] || [ ! -d $ISTIO_DIR/ ]; then
 	curl -L "https://istio.io/downloadIstio" | sh 

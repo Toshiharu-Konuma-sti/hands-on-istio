@@ -1,15 +1,17 @@
 #!/bin/sh
 
-SET_DIR=$(cd $(dirname $0); pwd)
-. $SET_DIR/functions.sh
+CUR_DIR=$(cd $(dirname $0); pwd)
+. $CUR_DIR/functions.sh
 
 call_show_start_banner
 
-APPHOST="try-istio.example"
+SET_DIR=$(call_path_of_setup $CUR_DIR)
 echo "\n### the dir for setting up  = [$SET_DIR] ##########"
 
-echo "\n### START: Add the ip address for Ingress to /etc/hosts ###"
 KUBE_IP=$(minikube ip)
+APPHOST=$(grep "\- host:" $SET_DIR/ingress/try-istio-ingress.yaml | grep -v "localhost" | sed 's/\s//g' | sed 's/-host://' | sed -z 's/\n//' | sed -z 's/\r//')
+
+echo "\n### START: Add the ip address for Ingress to /etc/hosts ###"
 grep "$KUBE_IP" /etc/hosts | grep "$APPHOST"
 if [ $? -ne 0 ]; then
 	sudo sh -c "echo \"\n$KUBE_IP\t$APPHOST\" >> /etc/hosts"
