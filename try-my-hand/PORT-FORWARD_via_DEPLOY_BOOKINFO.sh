@@ -10,3 +10,4 @@ echo " - App > http://$SRC_HOST:$SRC_PORT/productpage"
 echo "Press Ctrl-C to interrupt at any time.\n"
 
 kubectl port-forward deployment/$DST_HOST $SRC_PORT:$DST_PORT
+#	minikube service productpage --url
