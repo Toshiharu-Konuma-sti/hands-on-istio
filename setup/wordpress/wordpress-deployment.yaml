@@ -25,7 +25,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: wordpress-configmap
-                key: WORDPRESS_DB_HOST
+                key: MYSQL_HOST_PORT
           - name: WORDPRESS_DB_USER
             valueFrom:
               configMapKeyRef:
