@@ -30,9 +30,9 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: wordpress-configmap
-                key: WORDPRESS_DB_USER
+                key: MYSQL_USER
           - name: WORDPRESS_DB_PASSWORD
             valueFrom:
               configMapKeyRef:
                 name: wordpress-configmap
-                key: WORDPRESS_DB_PASSWORD
+                key: MYSQL_PASSWORD
