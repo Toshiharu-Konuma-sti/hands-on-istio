@@ -28,11 +28,11 @@ spec:
                 key: MYSQL_HOST_PORT
           - name: WORDPRESS_DB_USER
             valueFrom:
-              configMapKeyRef:
-                name: wordpress-configmap
+              secretKeyRef:
+                name: wordpress-secret
                 key: MYSQL_USER
           - name: WORDPRESS_DB_PASSWORD
             valueFrom:
-              configMapKeyRef:
-                name: wordpress-configmap
+              secretKeyRef:
+                name: wordpress-secret
                 key: MYSQL_PASSWORD

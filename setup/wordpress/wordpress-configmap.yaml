@@ -1,10 +1,7 @@
 apiVersion: v1
-data:
-  MYSQL_HOST_PORT: mysql-service:3306
-  MYSQL_ROOT_PASSWORD: password
-  MYSQL_DATABASE: wordpress
-  MYSQL_USER: wordpress
-  MYSQL_PASSWORD: wordpress
 kind: ConfigMap
 metadata:
   name: wordpress-configmap
+data:
+  MYSQL_HOST_PORT: mysql-service:3306
+  MYSQL_DATABASE: wordpress
