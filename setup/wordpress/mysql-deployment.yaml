@@ -15,22 +15,29 @@ spec:
         app: mysql
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.20
-
-    spec:
-      containers:
       - name: mysql
         image: mysql:8.0
         env:
           - name: MYSQL_ROOT_PASSWORD
-            value: password
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-configmap
+                key: MYSQL_ROOT_PASSWORD
           - name: MYSQL_DATABASE
-            value: wordpress
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-configmap
+                key: MYSQL_DATABASE
           - name: MYSQL_USER
-            value: wordpress
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-configmap
+                key: MYSQL_USER
           - name: MYSQL_PASSWORD
-            value: wordpress
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-configmap
+                key: MYSQL_PASSWORD
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
@@ -38,7 +45,3 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
-
-#        volumes:
-#          - ./mysql/data:/var/lib/mysql
-
