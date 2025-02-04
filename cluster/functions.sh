@@ -7,6 +7,15 @@ call_own_fname()
 }
 # }}}
 
+# {{{ call_path_of_cluster()
+# $1: the current directory
+call_path_of_cluster()
+{
+	TARGET=$(realpath $1/../cluster)
+	echo "$TARGET"
+}
+# }}}
+
 # {{{ call_path_of_setup()
 # $1: the current directory
 call_path_of_setup()

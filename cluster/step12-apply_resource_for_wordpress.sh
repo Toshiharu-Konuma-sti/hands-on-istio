@@ -5,11 +5,11 @@ CUR_DIR=$(cd $(dirname $0); pwd)
 
 call_show_start_banner
 
-SET_DIR=$(call_path_of_setup $CUR_DIR)
-echo "### the dir for setting up  = [$SET_DIR] ##########"
+CLT_DIR=$(call_path_of_cluster $CUR_DIR)
+echo "\n### the dir for cluster = [$CLT_DIR] ##########"
 
-echo "\n### START: Apply resources of kubernetes for Bookinfo Application ###"
-kubectl apply -f $SET_DIR/istio/samples/bookinfo/platform/kube/bookinfo.yaml
+echo "\n### START: Apply resources of kubernetes for WordPress Application ###"
+kubectl apply -f $CLT_DIR/wordpress/
 
 kubectl get pods | grep -v "NAME" | grep -v "Running"
 while [ $? -eq 0 ]

@@ -5,9 +5,6 @@ CUR_DIR=$(cd $(dirname $0); pwd)
 
 call_show_start_banner
 
-SET_DIR=$(call_path_of_setup $CUR_DIR)
-echo "### the dir for setting up  = [$SET_DIR] ##########"
-
 echo "\n### START: Create a kubernetes cluster by minikube ###"
 minikube stop
 minikube delete

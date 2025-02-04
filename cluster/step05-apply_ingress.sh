@@ -5,11 +5,11 @@ CUR_DIR=$(cd $(dirname $0); pwd)
 
 call_show_start_banner
 
-SET_DIR=$(call_path_of_setup $CUR_DIR)
-echo "\n### the dir for setting up  = [$SET_DIR] ##########"
+CLT_DIR=$(call_path_of_cluster $CUR_DIR)
+echo "\n### the dir for cluster = [$CLT_DIR] ##########"
 
 KUBE_IP=$(minikube ip)
-APPHOST=$(grep "\- host:" $SET_DIR/ingress/try-istio-ingress.yaml | grep -v "localhost" | sed 's/\s//g' | sed 's/-host://' | sed -z 's/\n//' | sed -z 's/\r//')
+APPHOST=$(grep "\- host:" $CLT_DIR/ingress/try-istio-ingress.yaml | grep -v "localhost" | sed 's/\s//g' | sed 's/-host://' | sed -z 's/\n//' | sed -z 's/\r//')
 
 echo "\n### START: Add the ip address for Ingress to /etc/hosts ###"
 grep "$KUBE_IP" /etc/hosts | grep "$APPHOST"
@@ -29,6 +29,6 @@ do
 done
 
 echo "\n### START: Apply a resource of Ingress ###"
-kubectl apply -f $SET_DIR/ingress/try-istio-ingress.yaml
+kubectl apply -f $CLT_DIR/ingress/try-istio-ingress.yaml
 
 call_show_finish_banner

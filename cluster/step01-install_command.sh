@@ -5,10 +5,10 @@ CUR_DIR=$(cd $(dirname $0); pwd)
 
 call_show_start_banner
 
-SET_DIR=$(call_path_of_setup $CUR_DIR)
-echo "\n### the dir for setting up  = [$SET_DIR] ##########"
+CLT_DIR=$(call_path_of_cluster $CUR_DIR)
+echo "\n### the dir for cluster  = [$CLT_DIR] ##########"
 
-ISTIO_DIR=$SET_DIR/istio
+ISTIO_DIR=$CLT_DIR/istio
 
 echo "\n### START: Install Minikube ##########"
 minikube version
