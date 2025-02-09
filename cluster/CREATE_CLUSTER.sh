@@ -11,8 +11,8 @@ echo "############################################################"
 $CUR_DIR/step01-install_command.sh
 $CUR_DIR/step02-start_minikube.sh
 $CUR_DIR/step03-enable_istio_injection.sh
-$CUR_DIR/step04-apply_kiali.sh*
-$CUR_DIR/step05-apply_ingress.sh*
+$CUR_DIR/step04-apply_dashboards.sh
+$CUR_DIR/step05-apply_ingress.sh
 
 #	$CUR_DIR/step11-apply_resource_for_bookinfo.sh
 #	$CUR_DIR/step12-apply_resource_for_wordpress.sh

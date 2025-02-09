@@ -5,7 +5,7 @@ CUR_DIR=$(cd $(dirname $0); pwd)
 
 call_show_start_banner
 
-echo "\n### START: Enable add-ons including Kiali ###"
+echo "\n### START: Enable add-ons of dashboard including Kiali ###"
 kubectl apply -f istio/samples/addons
 
 echo "\n### START: Check a status of rollout for deployment/kili ###"
